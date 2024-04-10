@@ -1,5 +1,5 @@
 #!/bin/bash
-forall=/home/anastasia/Scripts
+forall=/home/Scripts
 cd $forall
 for file in $forall
  do
