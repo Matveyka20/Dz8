@@ -1,10 +1,14 @@
 #!/bin/bash
 
-read -p "Введите путь к директории: " Dir
-if [[-d "$Dir"]]; then
-  echo "Директории не существует"
-else
-  rm -rfм Dir/*.bak
-  rm -rfм Dir/*.tmp
-  rm -rfм Dir/*.backup
+read -p "Введите путь: " Dir
+
+if [ -e "Dir" ]
+        then
+                cd $Dir
+                rm -v *.bak
+                rm -v *.tmp
+                rm -v *.backup
+        else
+                echo 'Указанная дирректория не найдена'
+                exit
 fi
