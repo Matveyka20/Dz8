@@ -1,17 +1,8 @@
 #!/bin/bash
-forall=/home/Scripts
-cd $forall
-for file in $forall
- do
-        if [ -d $file ]
-          then
-                continue
-          fi
-          if [ -e $file ]
-          then
-                owner='ls -l $file | grep "^-" | awk {'print $£3'}'
-                $file=$owner*   
-                cp $file $forall/$owner
-                chown $owner $forall/$owner/$file
-        fi
+for homedir in /home/* ; do 
+    if [ -d "$homedir" ] ; then
+         cp $1 "$homedir"
+         user=$(ls -ld $homedir | awk '{print $3}')
+         chown --verbose $user:$user $homedir/$1
+    fi
 done
